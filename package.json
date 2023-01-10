@@ -1,0 +1,30 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "An in-line application to view, add, and update employer departments and employees using Node.js, Inquirer, and MySQL.",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecussler/employee-tracker.git"
+  },
+  "keywords": [
+    "MySQL",
+    "Inquirer",
+    "Node.js"
+  ],
+  "author": "ecussler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecussler/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/ecussler/employee-tracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3"
+  }
+}
