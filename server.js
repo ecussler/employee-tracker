@@ -1,9 +1,6 @@
-// Packages needed to run the application. 
-const express = require('express'); 
+const express = require('express');
+const mysql = require('mysql2');
 const inquirer = require('inquirer'); 
-const mysql = require('mysql2'); 
-// const connection = require('./config/connection'); 
-inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer)); 
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,20 +10,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Connect to database
-const connection = mysql.createConnection(
-    // process.env.DB_NAME, 
-    // process.env.DB_USER, 
-    // process.env.DB_PASSWORD,
-    {
-        host: 'localhost', 
-        user: 'root', 
-        password: '', 
-        database: 'employee_db'
-    }, 
-    console.log('Connected to the employee_db database.')
-); 
+const db = mysql.createConnection(
+  {
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
+    database: 'employees_db'
+  },
+  console.log(`Connected to the employees_db database.`)
+);
 
-const prompts = [
+
+db.query('SELECT * FROM department', function (err, results){
+    console.table(resluts); 
+})
+
+
+
+function init() {
+ inquirer.prompt([
     {
         type: 'list', 
         name: 'options', 
@@ -41,6 +43,61 @@ const prompts = [
             'Update an Employee Role'
         ]
     }
-]
+ ])
+    .then((response) => {
+        const [...choices] = response; 
+
+        if (choices === 'View All Departments') {
+            viewAllDepartments();
+        } else if (choices === 'View All Roles') {
+            viewAllRoles(); 
+        } else if (choices === 'View All Employees') {
+            viewAllEmployees();
+        } else if (choices === 'Add a Department') {
+            addDepartment();
+        } else if (choices === 'Add a Role') {
+            addRole(); 
+        } else if (choices === 'Add an Employee') {
+            addEmployee();
+        } else if (choices === 'Update an Employee Role') {
+            updateRole();
+        }
+});
 
 
+// Show all departments
+function viewAllDepartments() {
+    db.query('SELECT * FROM department', (err, result) =>
+    err ? console.log(err) : console.table(result)
+    )
+}
+
+// Show all roles
+function viewAllRoles() {
+    const query = `SELECT * FROM roles
+                   JOIN department ON roles.department_id = department.id`;
+    db.query(query, (err, result) =>
+    err ? console.log(err) : console.table(result)
+    )
+}
+
+// Show all employees
+function viewAllEmployees()
+
+// Add department
+function addDepartment()
+
+// Add role
+function addRole()
+
+// Add employee
+function addEmployee()
+
+// Update employee
+updateRole()
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+// init();
