@@ -23,8 +23,9 @@
   ## Usage
   To start application, type node server into the command line. See below for the demonstration video. 
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/g9qWHLHZ45A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+  [![Watch the video](./assets/Screen%20Shot%202023-01-21%20at%209.50.37%20AM.png)](https://www.youtube.com/watch?v=g9qWHLHZ45A)
+  
+  
   ## Contribution
   NA
 
